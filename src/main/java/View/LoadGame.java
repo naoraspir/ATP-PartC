@@ -62,6 +62,8 @@ public class LoadGame implements IView {
             a.showAndWait();
             return;
         }
+        fileWasChosen=false;
+        vm.setFileWasChosen(false);
         FXMLLoader fxmlLoader=new  FXMLLoader(getClass().getResource("../View/MazeWindow.fxml"));
 
         Parent root = fxmlLoader.load();

@@ -58,7 +58,7 @@ public class MazeDisplayer implements IView {
     private Pane bPane;
     @FXML
     private Pane TPain;
-
+    private boolean fileWasChosen;
 
 
 
@@ -89,6 +89,7 @@ public class MazeDisplayer implements IView {
             a.show();
         }
         if(argu=="Loaded"){
+            this.fileWasChosen=vm.isFileWasChosen();
             this.rowChar=vm.getRowChar();
             this.colChar=vm.getColChar();
             this.maze=vm.getMaze();
@@ -158,9 +159,13 @@ public class MazeDisplayer implements IView {
     }
 
     public void DrawAgain(){
+
         this.rowChar=vm.getRowChar();
         this.colChar=vm.getColChar();
         this.maze=vm.getMaze();
+        if(this.maze==null){
+            return;
+        }
         this.sol=vm.getSol();
         this.hint=vm.isHint();
         this.MazeCanvas.setHint(this.hint);
@@ -213,7 +218,6 @@ public class MazeDisplayer implements IView {
 
     public void BackToMenu(Event e) throws IOException {
         vm.setMaze(null);
-
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("../View/MyView.fxml"));
         Parent root = fxmlLoader.load();
         Stage primaryStage=(Stage)MazeWindow.getScene().getWindow();
@@ -297,6 +301,14 @@ public class MazeDisplayer implements IView {
     }
 
     public void switchSceneLoad(Event e) throws IOException {
+//        if(!fileWasChosen){
+//            Alert a=new Alert(Alert.AlertType.ERROR);
+//            a.setContentText("You Must Choose a File!!!");
+//            a.showAndWait();
+//            return;
+//        }
+//        fileWasChosen=false;
+//        vm.setFileWasChosen(false);
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("../View/LoadGame.fxml"));
         Parent root = fxmlLoader.load();
         Stage primaryStage=(Stage)MazeWindow.getScene().getWindow();

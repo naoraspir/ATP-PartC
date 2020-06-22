@@ -115,6 +115,7 @@ public class MyViewModel extends Observable implements Observer {
 
     public void setFileWasChosen(boolean fileWasChosen) {
         this.fileWasChosen = fileWasChosen;
+        this.model.setFileWasChosen(fileWasChosen);
     }
 
     public void generateMaze(int row, int col)

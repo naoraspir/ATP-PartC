@@ -113,12 +113,12 @@ public class NewGame implements IView {
 //
 //            ControllerDisplayer.DrawAgain();
 //        });
-//        primaryStage.widthProperty().addListener((obs, oldVal, newVal) -> {
-//            ControllerDisplayer.DrawAgain();
-//        });
-//        primaryStage.heightProperty().addListener((obs, oldVal, newVal) -> {
-//            ControllerDisplayer.DrawAgain();
-//        });
+        primaryStage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            ControllerDisplayer.DrawAgain();
+        });
+        primaryStage.heightProperty().addListener((obs, oldVal, newVal) -> {
+            ControllerDisplayer.DrawAgain();
+        });
 
         vm.generateMaze(r,c);
     }
