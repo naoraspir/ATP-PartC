@@ -5,33 +5,25 @@
 
 <BorderPane fx:id="LoadGameWin" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoadGame">
     <top>
-        <MenuBar prefHeight="31.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+        <MenuBar BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="New" />
-                        <MenuItem mnemonicParsing="false" text="Save" />
-                        <MenuItem mnemonicParsing="false" text="Load" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Options">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Properties" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="New" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Save" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Load" />
+                        <MenuItem mnemonicParsing="false" text="Options" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeWin" text="Exit" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Game Rules" />
+                        <MenuItem fx:id="GameRules" mnemonicParsing="false" onAction="#switchSceneRules" text="Game Rules" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="About">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="App Info" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Exit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Quit" />
+                        <MenuItem mnemonicParsing="false" onAction="#AboutShow" text="App Info" />
                     </items>
                 </Menu>
             </menus>

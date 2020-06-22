@@ -17,6 +17,7 @@
                     <include>**/*/*.css</include>
                 </includes>
             </resource>
+
         </resources>
     </build>
     <properties>

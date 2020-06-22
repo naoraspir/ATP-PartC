@@ -5,35 +5,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="MazeWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MazeDisplayer">
+<BorderPane fx:id="MazeWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MazeDisplayer">
     <top>
-        <MenuBar prefHeight="31.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+        <MenuBar BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="New" />
-                        <MenuItem fx:id="SaveButton" mnemonicParsing="false" onAction="#SaveCurMaze" text="Save" />
-                        <MenuItem mnemonicParsing="false" text="Load" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Options">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Properties" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchSceneNew" text="New" />
+                        <MenuItem mnemonicParsing="false" onAction="#SaveCurMaze" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchSceneLoad" text="Load" />
+                        <MenuItem mnemonicParsing="false" onAction="#ShowConfig" text="Options" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeWin" text="Exit" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Game Rules" />
+                        <MenuItem fx:id="GameRules" mnemonicParsing="false" onAction="#switchSceneRules" text="Game Rules" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="About">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="App Info" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Exit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Quit" />
+                        <MenuItem mnemonicParsing="false" onAction="#AboutShow" text="App Info" />
                     </items>
                 </Menu>
             </menus>
@@ -63,8 +55,14 @@
       </GridPane>
    </bottom>
    <center>
-       <Pane fx:id="bPane">
-            <MazeCanvas fx:id="MazeCanvas" height="340.0" onKeyPressed="#MoveChar" onMouseClicked="#MoveFocus" width="600.0" BorderPane.alignment="CENTER" />
+       <Pane fx:id="bPane" BorderPane.alignment="CENTER">
+           <children>
+               <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" maxHeight="${bPane.height}" maxWidth="${bPane.width}" vbarPolicy="NEVER">
+                    <content>
+                        <MazeCanvas fx:id="MazeCanvas" height="${scrollpane.height}" onKeyPressed="#MoveChar" onMouseClicked="#MoveFocus" onScroll="#Zoom" width="${scrollpane.width}" BorderPane.alignment="CENTER" />
+                    </content>
+               </ScrollPane>
+           </children>
        </Pane>
    </center>
 </BorderPane>

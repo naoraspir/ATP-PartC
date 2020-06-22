@@ -24,6 +24,7 @@ import java.util.Observer;
 public class MyModel extends Observable implements IModel {
     private int rowChar;
     private int colChar;
+    private boolean fileWasChosen;
     private IMazeGenerator gen;
     private Solution sol;
     private Maze  maze;
@@ -44,12 +45,8 @@ public class MyModel extends Observable implements IModel {
         rowChar = 0;
         colChar = 0;
         hint= false;
-        //Todo take algorithms from propertys
-        gen=new MyMazeGenerator();
-        solver=new BestFirstSearch();
 
     }
-
     public void GenerateMaze(int rows,int cols){
         ClientGenStratg(rows, cols);
 
@@ -297,6 +294,7 @@ public class MyModel extends Observable implements IModel {
         FileChooser fileChooser=new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Maze Files","*.Maze"));
         File file= fileChooser.showOpenDialog(null);
+        if(file==null){return;}
         String filepath=file.getPath();
         FileInputStream fileIn = null;
         try {
@@ -304,6 +302,8 @@ public class MyModel extends Observable implements IModel {
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
             Pair<Maze,Position> mazePositionPair= (Pair<Maze,Position>) objectIn.readObject();
             maze =mazePositionPair.getKey();
+
+            Smaze=new SearchableMaze(maze);
             rowChar=mazePositionPair.getValue().getRowIndex();
             colChar=mazePositionPair.getValue().getColumnIndex();
             curPos=mazePositionPair.getValue();
@@ -311,14 +311,32 @@ public class MyModel extends Observable implements IModel {
             ClientSolStratg();
 
         } catch (FileNotFoundException e) {
+            setChanged();
+            notifyObservers("LoadError");
             e.printStackTrace();
+            return;
         } catch (IOException e) {
+            setChanged();
+            notifyObservers("LoadError");
             e.printStackTrace();
+            return;
         } catch (ClassNotFoundException e) {
+            setChanged();
+            notifyObservers("LoadError");
             e.printStackTrace();
+            return;
         }
+        fileWasChosen=true;
         setChanged();
         notifyObservers("Loaded");
+    }
+
+    public boolean isFileWasChosen() {
+        return fileWasChosen;
+    }
+
+    public void setFileWasChosen(boolean fileWasChosen) {
+        this.fileWasChosen = fileWasChosen;
     }
 
     public SearchableMaze getSmaze() {

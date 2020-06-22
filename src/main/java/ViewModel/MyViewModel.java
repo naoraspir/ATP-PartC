@@ -13,6 +13,7 @@ import java.util.Observer;
 
 public class MyViewModel extends Observable implements Observer {
 
+    private boolean fileWasChosen;
     private MyModel model;
     private int rowChar;
     private int colChar;
@@ -90,6 +91,7 @@ public class MyViewModel extends Observable implements Observer {
                     notifyObservers("Saved");
                     return;
                 case "Loaded":
+                    this.fileWasChosen=((MyModel)model).isFileWasChosen();
                     this.maze = ((MyModel)model).getMaze();
                     this.rowChar=((MyModel)model).getCurPos().getRowIndex();
                     this.colChar=((MyModel)model).getCurPos().getColumnIndex();
@@ -99,12 +101,23 @@ public class MyViewModel extends Observable implements Observer {
                     notifyObservers("Loaded");
                     return;
 
+                case "LoadError":
+                    setChanged();
+                    notifyObservers("LoadError");
+                    return;
             }
         }
     }
 
+    public boolean isFileWasChosen() {
+        return fileWasChosen;
+    }
 
-    public void generateMaze(int row,int col)
+    public void setFileWasChosen(boolean fileWasChosen) {
+        this.fileWasChosen = fileWasChosen;
+    }
+
+    public void generateMaze(int row, int col)
     {
         this.model.GenerateMaze(row,col);
     }

@@ -9,29 +9,21 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Load" />
-               </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Options">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Properties" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="New" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Save" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Load" />
+                  <MenuItem mnemonicParsing="false" onAction="#ShowConfig" text="Options" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeWin" text="Exit" />
                </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="Game Rules" />
+              <MenuItem fx:id="GameRules" mnemonicParsing="false" onAction="#switchSceneRules" text="Game Rules" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="About">
               <items>
-                <MenuItem mnemonicParsing="false" text="App Info" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Exit">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Quit" />
+                <MenuItem mnemonicParsing="false" onAction="#AboutShow" text="App Info" />
               </items>
             </Menu>
         </menus>
@@ -50,17 +42,17 @@
          <children>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <center>
-                  <RadioButton fx:id="p3" mnemonicParsing="false" text="p3" BorderPane.alignment="CENTER" />
+                  <RadioButton fx:id="p3" mnemonicParsing="false" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <center>
-                  <RadioButton fx:id="p2" mnemonicParsing="false" text="p2" BorderPane.alignment="CENTER" />
+                  <RadioButton fx:id="p2" mnemonicParsing="false" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <center>
-                  <RadioButton fx:id="p1" mnemonicParsing="false" text="p1" BorderPane.alignment="CENTER" />
+                  <RadioButton fx:id="p1" mnemonicParsing="false" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
          </children>
