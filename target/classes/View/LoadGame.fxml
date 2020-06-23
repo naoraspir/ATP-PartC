@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="LoadGameWin" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LoadGame" stylesheets="@newstyle.css" styleClass="ourStyle">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem disable="true" mnemonicParsing="false" text="New" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Save" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Load" />
+                        <MenuItem mnemonicParsing="false" text="Options" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeWin" text="Exit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem fx:id="GameRules" mnemonicParsing="false" onAction="#switchSceneRules" text="Game Rules" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="About">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#AboutShow" text="App Info" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <bottom>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Button fx:id="BackToMenu" mnemonicParsing="false" onAction="#BackToMenu" prefHeight="31.0" prefWidth="147.0" text="Back" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                <Button fx:id="letsGoLoad" mnemonicParsing="false" onAction="#StartMaze" prefHeight="31.0" prefWidth="183.0" text="Let's Go!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            </children>
+        </GridPane>
+    </bottom>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <Button fx:id="BrowseButton" mnemonicParsing="false" onAction="#BrowseMaze" text="Browse" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>

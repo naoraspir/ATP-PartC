@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="menu" prefHeight="398.0" prefWidth="600.0" styleClass="ourStyle" stylesheets="@newstyle.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem disable="true" mnemonicParsing="false" text="New" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Save" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Load" />
+                  <MenuItem mnemonicParsing="false" onAction="#ShowConfig" text="Options" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeWin" text="Exit" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="GameRules" mnemonicParsing="false" onAction="#switchSceneRules" text="Game Rules" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="About">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#AboutShow" text="App Info" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <bottom>
+                  <CheckBox fx:id="p2" mnemonicParsing="false" onAction="#handlep1" selected="true" text="Female" BorderPane.alignment="CENTER" />
+               </bottom>
+               <center>
+                  <Pane prefHeight="200.0" prefWidth="200.0" styleClass="GirlImG" stylesheets="@newstyle.css" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <bottom>
+                  <CheckBox fx:id="p1" mnemonicParsing="false" onAction="#handlep1" text="Male" BorderPane.alignment="CENTER" />
+               </bottom>
+               <center>
+                  <Pane prefHeight="200.0" prefWidth="200.0" styleClass="BoyImG" stylesheets="@newstyle.css" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="40.0" left="15.0" right="15.0" top="40.0" />
+                     </BorderPane.margin></Pane>
+               </center>
+            </BorderPane>
+         </children>
+      </GridPane>
+   </center>
+   <bottom>
+      <GridPane prefHeight="160.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="newBttn" mnemonicParsing="false" onAction="#switchSceneNew" prefHeight="71.0" prefWidth="300.0" text="New" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Button fx:id="loadBttn" mnemonicParsing="false" onAction="#switchSceneLoad" prefHeight="38.0" prefWidth="300.0" text="Load" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+         </children>
+      </GridPane>
+   </bottom>
+</BorderPane>

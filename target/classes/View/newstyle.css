@@ -1,0 +1,13 @@
+.ourStyle
+ {
+    -fx-background-image: url("../resources/Images/Background.jpeg");
+    -fx-background-size: 100% 100%;
+}
+.BoyImG{
+    -fx-background-image: url("../resources/Images/MaleStud.png");
+    -fx-background-size: 100% 100%;
+}
+.GirlImG{
+    -fx-background-image: url("../resources/Images/studentFemale2.png");
+    -fx-background-size: 100% 100%;
+}
