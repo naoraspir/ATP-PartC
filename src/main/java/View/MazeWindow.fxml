@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="MazeWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MazeDisplayer">
+<BorderPane fx:id="MazeWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MazeDisplayer" stylesheets="@newstyle.css" styleClass="ourStyle">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -57,7 +57,7 @@
    <center>
        <Pane fx:id="bPane" BorderPane.alignment="CENTER">
            <children>
-               <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" maxHeight="${bPane.height}" maxWidth="${bPane.width}" vbarPolicy="NEVER">
+               <ScrollPane fx:id="scrollpane" hbarPolicy="NEVER" maxHeight="${bPane.height}" maxWidth="${bPane.width}" vbarPolicy="NEVER" stylesheets="@newstyle.css" styleClass="ourStyle">
                     <content>
                         <MazeCanvas fx:id="MazeCanvas" height="${scrollpane.height}" onKeyPressed="#MoveChar" onMouseClicked="#MoveFocus" onScroll="#Zoom" width="${scrollpane.width}" BorderPane.alignment="CENTER" />
                     </content>

@@ -24,6 +24,7 @@ import java.util.Observer;
 public class MyModel extends Observable implements IModel {
     private int rowChar;
     private int colChar;
+    private int Gender;
     private boolean fileWasChosen;
     private IMazeGenerator gen;
     private Solution sol;
@@ -59,7 +60,17 @@ public class MyModel extends Observable implements IModel {
         notifyObservers("generated");
     }
 
-    private void ClientGenStratg(int row,int col){
+    public int getGender() {
+        return Gender;
+    }
+
+    public void setGender(int gender) {
+        Gender = gender;
+        setChanged();
+        notifyObservers("Gender");
+    }
+
+    private void ClientGenStratg(int row, int col){
         try {
             Client client = new Client(InetAddress.getLocalHost(), 5400, new IClientStrategy() {
                 public void clientStrategy(InputStream inFromServer, OutputStream outToServer) {

@@ -28,6 +28,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -46,6 +48,7 @@ public class MazeDisplayer implements IView {
     @FXML
     private  Button BackToMain;
     private MyViewModel vm;
+    private int Gender;
     private int rowChar;
     private int colChar;
     private Position GoalPos;
@@ -65,6 +68,7 @@ public class MazeDisplayer implements IView {
     @Override
     public void update(Observable o, Object arg) {
         String argu=(String)arg;
+        if(argu=="Gender"){this.Gender=vm.getGender();}
         if(argu=="generated"||argu=="Moved"||argu=="hint" ) {
             this.rowChar = vm.getRowChar();
             this.colChar = vm.getColChar();
@@ -74,13 +78,30 @@ public class MazeDisplayer implements IView {
             this.MazeCanvas.setHint(this.hint);
             GoalPos = vm.getGoalPos();
             MazeCanvas.requestFocus();
-            this.MazeCanvas.drawMaze(maze.getMaze(), rowChar, colChar, sol, GoalPos);//TODO case of goal reached.
+            this.Gender=vm.getGender();
+            if (argu=="Moved"){
+                Media applause=new Media(new File("src/main/resources/Sounds/footstep.wav").toURI().toString());
+                MediaPlayer musicplay=new MediaPlayer(applause);
+                musicplay.setVolume(1);
+                musicplay.play();
+            }
+            if (argu=="hint"){
+                Media applause=new Media(new File("src/main/resources/Sounds/hint.wav").toURI().toString());
+                MediaPlayer musicplay=new MediaPlayer(applause);
+                musicplay.setVolume(1);
+                musicplay.play();
+            }
+            this.MazeCanvas.drawMaze(maze.getMaze(), rowChar, colChar, sol, GoalPos,Gender);//TODO case of goal reached.
         }
         if(GoalPos.getColumnIndex()==colChar&&GoalPos.getRowIndex()==rowChar){
             Alert a=new Alert(Alert.AlertType.CONFIRMATION);
             a.setContentText("Congratulation,you solved the maze!!! ");
             a.show();
-            //TODO congrats music
+            Media applause=new Media(new File("src/main/resources/Sounds/Applause.wav").toURI().toString());
+            MediaPlayer musicplay=new MediaPlayer(applause);
+            musicplay.setVolume(1);
+            musicplay.play();
+            
         }
 
         if(argu=="Saved"){
@@ -97,6 +118,7 @@ public class MazeDisplayer implements IView {
             this.hint=vm.isHint();
             this.MazeCanvas.setHint(this.hint);
             GoalPos=vm.getGoalPos();
+            this.Gender=vm.getGender();
             MazeCanvas.requestFocus();
         }
 
@@ -106,6 +128,14 @@ public class MazeDisplayer implements IView {
         MazeCanvas.heightProperty().addListener(observable -> DrawAgain());
         MazeCanvas.widthProperty().bind(bPane.widthProperty());
         MazeCanvas.heightProperty().bind(bPane.heightProperty());
+    }
+
+    public int getGender() {
+        return Gender;
+    }
+
+    public void setGender(int gender) {
+        Gender = gender;
     }
 
     public void zoom(Node node, double factor, double x, double y) {
@@ -171,7 +201,7 @@ public class MazeDisplayer implements IView {
         this.MazeCanvas.setHint(this.hint);
         GoalPos=vm.getGoalPos();
         MazeCanvas.requestFocus();
-        this.MazeCanvas.drawMaze(maze.getMaze(),rowChar,colChar, sol,GoalPos);
+        this.MazeCanvas.drawMaze(maze.getMaze(),rowChar,colChar, sol,GoalPos,Gender);
     }
 
     public View.MazeCanvas getMazeCanvas() {

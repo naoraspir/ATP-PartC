@@ -15,6 +15,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -39,7 +41,10 @@ public class LoadGame implements IView {
 
 
     public void BackToMenu(Event e) throws IOException {
-
+        Media applause=new Media(new File("src/main/resources/Sounds/bclick.wav").toURI().toString());
+        MediaPlayer musicplay=new MediaPlayer(applause);
+        musicplay.setVolume(1);
+        musicplay.play();
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("../View/MyView.fxml"));
         Parent root = fxmlLoader.load();
         Stage primaryStage=(Stage)LoadGameWin.getScene().getWindow();
@@ -56,6 +61,10 @@ public class LoadGame implements IView {
 
     public void StartMaze(Event e) throws IOException {
         //take from saved maze
+        Media applause=new Media(new File("src/main/resources/Sounds/bclick.wav").toURI().toString());
+        MediaPlayer musicplay=new MediaPlayer(applause);
+        musicplay.setVolume(1);
+        musicplay.play();
         if(!fileWasChosen){
             Alert a=new Alert(Alert.AlertType.ERROR);
             a.setContentText("You Must Choose a File!!!");
@@ -129,6 +138,10 @@ public class LoadGame implements IView {
     }
 
     public void BrowseMaze(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
+        Media applause=new Media(new File("src/main/resources/Sounds/bclick.wav").toURI().toString());
+        MediaPlayer musicplay=new MediaPlayer(applause);
+        musicplay.setVolume(1);
+        musicplay.play();
         vm.BrowesMaze();
     }
 

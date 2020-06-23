@@ -17,6 +17,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -43,7 +45,10 @@ public class NewGame implements IView {
 
 
     public void BackToMenu(Event e) throws IOException {
-
+        Media applause=new Media(new File("src/main/resources/Sounds/bclick.wav").toURI().toString());
+        MediaPlayer musicplay=new MediaPlayer(applause);
+        musicplay.setVolume(1);
+        musicplay.play();
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("../View/MyView.fxml"));
         Parent root = fxmlLoader.load();
         Stage primaryStage=(Stage)NewGameWin.getScene().getWindow();
@@ -75,6 +80,10 @@ public class NewGame implements IView {
     }
 
     public void StartMaze(Event e) throws IOException {
+        Media applause=new Media(new File("src/main/resources/Sounds/bclick.wav").toURI().toString());
+        MediaPlayer musicplay=new MediaPlayer(applause);
+        musicplay.setVolume(1);
+        musicplay.play();
         String rows=rowNum.getText();
         String cols=colNum.getText();
         int r,c;

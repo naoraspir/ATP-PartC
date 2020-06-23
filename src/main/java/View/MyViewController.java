@@ -10,11 +10,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -30,11 +34,11 @@ public class MyViewController implements IView {
     @FXML
     private Pane menu;
     @FXML
-    private RadioButton p1;
+    private CheckBox p1;
     @FXML
-    private RadioButton p2;
-    @FXML
-    private RadioButton p3;
+    private CheckBox p2;
+    private int player;
+
     @FXML
     private Button newBttn;
     @FXML
@@ -42,6 +46,16 @@ public class MyViewController implements IView {
     private MyViewModel vm;
 
      public void switchSceneNew(Event e) throws IOException {
+         if(p1.isSelected()){
+            vm.setGender(1);
+         }
+         else{
+             vm.setGender(2);
+         }
+         Media applause=new Media(new File("src/main/resources/Sounds/bclick.wav").toURI().toString());
+         MediaPlayer musicplay=new MediaPlayer(applause);
+         musicplay.setVolume(1);
+         musicplay.play();
          FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("../View/NewGame.fxml"));
          Parent root = fxmlLoader.load();
          Stage primaryStage=(Stage)menu.getScene().getWindow();
@@ -56,7 +70,37 @@ public class MyViewController implements IView {
 
      }
 
+    public CheckBox getP1() {
+        return p1;
+    }
+
+    public Pane getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Pane menu) {
+        this.menu = menu;
+    }
+
+    public CheckBox getP2() {
+        return p2;
+    }
+
+
+
+    public int getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(int player) {
+        this.player = player;
+    }
+
     public void switchSceneLoad(Event e) throws IOException {
+        Media applause=new Media(new File("src/main/resources/Sounds/bclick.wav").toURI().toString());
+        MediaPlayer musicplay=new MediaPlayer(applause);
+        musicplay.setVolume(1);
+        musicplay.play();
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("../View/LoadGame.fxml"));
         Parent root = fxmlLoader.load();
         Stage primaryStage=(Stage)menu.getScene().getWindow();
@@ -136,5 +180,31 @@ public class MyViewController implements IView {
                 wef[1]+"\n"+"ThreadPool Count->"+wef[2]+"\n");
         a.showAndWait();
         return;
+    }
+
+    public void handlep1() {
+         if (p1.isSelected()){
+             p2.setSelected(false);
+         }else{
+             p2.setSelected(true);
+         }
+    }
+
+    public void handlep2() {
+        if (p2.isSelected()){
+            p1.setSelected(false);
+        }else{
+            p1.setSelected(true);
+        }
+
+
+
+    }
+
+    public void ButtonSound() {
+        Media applause=new Media(new File("src/main/resources/Sounds/bclick.wav").toURI().toString());
+        MediaPlayer musicplay=new MediaPlayer(applause);
+        musicplay.setVolume(1);
+        musicplay.play();
     }
 }

@@ -12,7 +12,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class MyViewModel extends Observable implements Observer {
-
+    private int Gender;
     private boolean fileWasChosen;
     private MyModel model;
     private int rowChar;
@@ -53,6 +53,14 @@ public class MyViewModel extends Observable implements Observer {
         this.model.SetHint();
     }
 
+    public int getGender() {
+        return Gender;
+    }
+
+    public void setGender(int gender) {
+        model.setGender(gender);
+    }
+
     public boolean isHint() {
         return hint;
     }
@@ -63,12 +71,16 @@ public class MyViewModel extends Observable implements Observer {
         {
             String argu=(String)arg;
             switch (argu){
+                case "Gender":
+                    this.Gender=model.getGender();
+                    return;
                 case "generated":
                     this.maze = ((MyModel)model).getMaze();
                     rowChar=maze.getStartPosition().getRowIndex();
                     colChar=maze.getStartPosition().getColumnIndex();
                     GoalPos=maze.getGoalPosition();
                     this.sol=model.getSol();
+                    this.Gender=model.getGender();
                     setChanged();
                     notifyObservers("generated");
                     return;
@@ -79,6 +91,7 @@ public class MyViewModel extends Observable implements Observer {
                     notifyObservers("hint");
                     return;
                 case "Moved":
+                    this.Gender=model.getGender();
                     int rowChar = model.getRowChar();
                     int colChar = model.getColChar();
                     this.rowChar = rowChar;
@@ -97,6 +110,7 @@ public class MyViewModel extends Observable implements Observer {
                     this.colChar=((MyModel)model).getCurPos().getColumnIndex();
                     GoalPos=maze.getGoalPosition();
                     this.sol=model.getSol();
+                    this.Gender=model.getGender();
                     setChanged();
                     notifyObservers("Loaded");
                     return;
