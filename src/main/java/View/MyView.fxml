@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <BorderPane fx:id="menu" prefHeight="398.0" prefWidth="600.0" styleClass="ourStyle" stylesheets="@newstyle.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
@@ -45,10 +45,7 @@
                   <CheckBox fx:id="p2" mnemonicParsing="false" onAction="#handlep1" selected="true" text="Female" BorderPane.alignment="CENTER" />
                </bottom>
                <center>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                     <image>
-                        <Image url="@../../resources/Images/FemaleGrad2NoHat.jpeg" />
-                     </image></ImageView>
+                  <Pane prefHeight="200.0" prefWidth="200.0" styleClass="GirlImG" stylesheets="@newstyle.css" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
@@ -56,10 +53,10 @@
                   <CheckBox fx:id="p1" mnemonicParsing="false" onAction="#handlep1" text="Male" BorderPane.alignment="CENTER" />
                </bottom>
                <center>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                     <image>
-                        <Image url="@../../resources/Images/MaleStud.png" />
-                     </image></ImageView>
+                  <Pane prefHeight="200.0" prefWidth="200.0" styleClass="BoyImG" stylesheets="@newstyle.css" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="40.0" left="15.0" right="15.0" top="40.0" />
+                     </BorderPane.margin></Pane>
                </center>
             </BorderPane>
          </children>
